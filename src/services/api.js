@@ -2,12 +2,12 @@ import axios from "axios";
 
 const API_KEY = "2eeabaae";
 
-export const searchMovies = async (query = "Avengers", type = "all") => {
+export const searchMovies = async (query = "Avengers", type = "all", page = 1) => {
   let typeParam = type !== "all" ? `&type=${type}` : "";
 
   try {
     const res = await axios.get(
-      `https://www.omdbapi.com/?apikey=${API_KEY}&s=${query}${typeParam}`
+      `https://www.omdbapi.com/?apikey=${API_KEY}&s=${query}${typeParam}&page=${page}`
     );
 
     if (res.data.Response === "False") {
